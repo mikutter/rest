@@ -2,6 +2,10 @@
 # Rest API で定期的にタイムラインを更新するプラグイン
 
 Plugin.create :rest do
+  UserConfig[:retrieve_interval_friendtl] ||= 1
+  UserConfig[:retrieve_interval_mention]  ||= 20
+  UserConfig[:retrieve_count_friendtl]    ||= 20
+  UserConfig[:retrieve_count_mention]     ||= 20
 
   def self.define_periodical_executer(api, interval, count, &success)
     counter = UserConfig[interval]
